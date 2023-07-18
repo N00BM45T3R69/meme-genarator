@@ -1,0 +1,37 @@
+  const [counter,setCount] = React.useState(0)
+    function plus(){
+        setCount(counter=>counter+1)
+    }
+    function minus(){
+        setCount(counter=>counter-1)
+    }
+
+    rendering items by updating array
+    const [thingsArray, setThingsArray] = React.useState(["Thing 1", "Thing 2"])
+    
+    function addItem() {
+        // We'll work on this next
+        setThingsArray(prevThingsArray => {
+            return [...prevThingsArray, `Thing ${prevThingsArray.length + 1}`]
+        })
+    }
+
+
+updating object
+    setContact(prevContact => ({...prevContact,isFavorite: !prevContact.isFavorite}))
+
+we can't directly use functions of parent so we pass them as arguments for child component
+
+   function toggle(id) {
+        setSquares(prevSquares => {
+            return prevSquares.map((square) => {
+                return square.id === id ? {...square, on: !square.on} : square
+            })
+        })
+    }
+
+  React.useEffect(function() {
+        console.log("Effect ran")
+    }, [])
+always has 2 parameters 1 is an arrow function and the other is the dependdency state 
+i.e if the member in dependency changes then react has to restart the effect
